@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, text
 import os
 import json
 
-AIVEN_DB_PASS = os.getenv('AIVEN_DB_PASS')
+AIVEN_DB_PASS = os.environ['AIVEN_DB_PASS']
 db_connection_string = f"mysql+pymysql://avnadmin:{AIVEN_DB_PASS}@cici-berkeley-e360.a.aivencloud.com:25746/cicidb?charset=utf8mb4"
 
 engine = create_engine(db_connection_string,
