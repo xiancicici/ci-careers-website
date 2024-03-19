@@ -16,3 +16,13 @@ def load_jobs_from_db():
     result = conn.execute(text("select * from jobs")).mappings().all()
     jobs = [dict(row) for row in result]
     return jobs
+
+def load_job_from_db(id):
+  with engine.connect() as conn:
+    result = conn.execute(text(f"select * from jobs where id = {id}"))
+    rows = result.mappings().all()
+    if len(rows) == 0:
+      return None
+    else:
+      return dict(rows[0])
+    
